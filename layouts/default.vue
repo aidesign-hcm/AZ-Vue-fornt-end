@@ -42,6 +42,7 @@
         <v-icon>mdi-minus</v-icon>
       </v-btn>
       <v-toolbar-title v-text="title" />
+      <v-btn class="ml-3" to="/cart">{{getCartlength}}</v-btn>
       <v-spacer />
       <v-btn icon @click.stop="rightDrawer = !rightDrawer">
         <v-icon>mdi-menu</v-icon>
@@ -71,6 +72,7 @@
 </template>
 
 <script>
+import {mapGetters} from "Vuex";
 export default {
   data() {
     return {
@@ -94,6 +96,9 @@ export default {
       rightDrawer: false,
       title: "Vuetify.js"
     };
+  }, 
+  computed: {
+    ...mapGetters(["getCartlength"])
   }
 };
 </script>

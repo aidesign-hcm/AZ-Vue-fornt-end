@@ -17,7 +17,7 @@
                 <p>Stock: {{product.StockQuantity}}</p>
             </v-col>
             <v-col md="3" cols="12">
-                <v-btn to="#" color="primary">Buy Now</v-btn>
+                <v-btn to="#" color="primary" @click="addProductToCart(product)">Buy Now</v-btn>
                 <v-btn to="#" color="second">Add to cart</v-btn>
             </v-col>
         </v-row>
@@ -26,6 +26,7 @@
 </template>
 
 <script>
+import {mapActions} from "Vuex"
 export default {
     async asyncData({ $axios, params }) {
     try {
@@ -37,6 +38,9 @@ export default {
       console.log(error);
     }
   },
+  methods: {
+    ...mapActions(["addProductToCart"])
+  }
 
 }
 </script>
