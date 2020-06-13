@@ -111,7 +111,6 @@ export default {
         console.log(response)
         this.$router.push("/")
         
-
       } catch (err) {
         console.log(err)
       }

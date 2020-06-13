@@ -1,6 +1,8 @@
+import axios from 'axios'
+
 export const state = () => ({
   cart:[],
-  cartLength: 0
+  cartLength: 0,
 })
 
 export const actions = {
@@ -12,9 +14,9 @@ export const actions = {
       commit('incrementProductQty', cartProduct)
     }
     commit('incrementCartLength')
-  }
-}
+  },
 
+}
 export const mutations = {
   pushProductToCart(state, product) {
     product.quantity = 1,
@@ -56,7 +58,7 @@ export const mutations = {
     state.cartLength -= product.quantity;
     let indexOfProduct = state.cart.indexOf(product);
     state.cart.splice(indexOfProduct, 1)
-  }
+  },
 }
 
 export const getters = {
@@ -72,5 +74,5 @@ export const getters = {
       total += product.price * product.quantity
     })
     return total
-  }
+  },
 }
