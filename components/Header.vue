@@ -5,7 +5,8 @@
     </v-toolbar-title>
     <v-spacer />
     <template v-if="$auth.$state.loggedIn">
-        <v-btn to="/signup" text>{{ $auth.$state.user.name }}</v-btn>
+        <v-btn to="/profile" text>{{ $auth.$state.user.name }}</v-btn>
+        <v-btn to="/address" text>Address</v-btn>
         <v-btn @click="onLogout" text>Logout</v-btn>
       </template>
       <template v-else>
@@ -14,6 +15,7 @@
     <v-btn to="/cart" text rounded>Cart {{getCartlength}}</v-btn>
     <v-btn to="/Checkout" text rounded>Checkout</v-btn>
     <v-btn @click="toggleTheme" text rounded>Light</v-btn>
+    
   </v-app-bar>
 </template>
 
@@ -39,4 +41,5 @@ export default {
 };
 </script>
 
-<style></style>
+<style>
+</style>

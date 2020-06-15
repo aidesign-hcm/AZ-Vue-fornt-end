@@ -2,6 +2,7 @@
   <v-layout column justify-center align-center>
     <v-container class="mb-6">
       <h3 class="title">Freature Product</h3>
+      <p>{{$auth.$state.user.address.city }}</p>
       <v-row >
         <productCard v-for="product in products" :product="product" :key="product.id"  />
       </v-row>

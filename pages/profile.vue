@@ -6,7 +6,7 @@
         <v-col col lg="9">
           <v-form>
               <v-text-field v-model="name" :label="$auth.$state.user.name" prepend-icon="mdi-account-circle" />
-              <v-text-field v-model="email" label="email" prepend-icon="mdi-account-circle" />
+              <v-text-field v-model="email" :label="$auth.$state.user.email" prepend-icon="mdi-account-circle" />
               <v-text-field
                 v-model="password"
                 :type="showPassword ? 'text' : 'password'"

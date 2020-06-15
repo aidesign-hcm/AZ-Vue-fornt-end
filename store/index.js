@@ -1,5 +1,3 @@
-import axios from 'axios'
-
 export const state = () => ({
   cart:[],
   cartLength: 0,
@@ -9,25 +7,25 @@ export const actions = {
   addProductToCart({state, commit}, product){
     const cartProduct = state.cart.find(prod => prod._id === product._id);
     if (!cartProduct){
-      commit('pushProductToCart', product)
+      commit('PUSH_PRODUCT_TO_CART', product)
     } else {
-      commit('incrementProductQty', cartProduct)
+      commit('INCREMENT_PRODUCT_QTY', cartProduct)
     }
-    commit('incrementCartLength')
+    commit('INCREMENT_CART_LENGTH')
   },
 
 }
 export const mutations = {
-  pushProductToCart(state, product) {
+  PUSH_PRODUCT_TO_CART(state, product) {
     product.quantity = 1,
     state.cart.push(product)
   },
-  incrementProductQty(state, product){
+  INCREMENT_PRODUCT_QTY(state, product){
     product.quantity++;
     let indexOfProduct = state.cart.indexOf(product);
     state.cart.splice(indexOfProduct, 1, product)
   },
-  incrementCartLength(state){
+  INCREMENT_CART_LENGTH(state){
     state.cartLength = 0;
     if(state.cart.length > 0){
       state.cart.map (product =>{

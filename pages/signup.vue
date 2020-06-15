@@ -7,18 +7,15 @@
           <v-col cols="6">
             <h1>Signup</h1>
             <v-form ref="signUpForm" v-model="formValidity" class="row">
-                <v-col
-                cols="12"
-                md="12"
-                >
+              <v-col cols="12" md="12">
                 <v-text-field
-                    v-model="name"
-                    :rules="nameRules"
-                    :counter="10"
-                    label="First name"
-                    required
+                  v-model="name"
+                  :rules="nameRules"
+                  :counter="10"
+                  label="First name"
+                  required
                 ></v-text-field>
-                </v-col>
+              </v-col>
               <v-col cols="12" sm="12">
                 <v-text-field
                   label="Email"
@@ -63,11 +60,11 @@
 import Logo from "~/components/Logo.vue";
 export default {
   middleware: "auth",
-  auth:"guest",
+  auth: "guest",
   layout: "none",
   data: () => ({
     email: "",
-    name: '',
+    name: "",
     password: "Password",
     formValidity: false,
     show1: false,
@@ -84,8 +81,8 @@ export default {
         "Email should contain a valid domain extension."
     ],
     nameRules: [
-        v => !!v || 'Name is required',
-        v => v.length <= 10 || 'Name must be less than 10 characters',
+      v => !!v || "Name is required",
+      v => v.length <= 10 || "Name must be less than 10 characters"
     ],
     rules: {
       required: value => !!value || "Required.",
@@ -106,17 +103,23 @@ export default {
           name: this.name,
           email: this.email,
           password: this.password
+        };
+        let response = await this.$axios.$post("/api/auth/signup", data);
+        if (response.success) {
+          this.$auth.loginWith("local", {
+            data: {
+              email: this.email,
+              password: this.password
+            }
+          });
+          this.$router.push("/");
         }
-        let response = await this.$axios.$post('/api/auth/signup', data )
-        console.log(response)
-        this.$router.push("/")
-        
       } catch (err) {
-        console.log(err)
+        console.log(err);
       }
     }
   },
-  components:{
+  components: {
     Logo
   }
 };
