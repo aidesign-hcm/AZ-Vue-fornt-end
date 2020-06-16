@@ -13,7 +13,7 @@
         <v-btn to="/signup">Register</v-btn>
       </template>
     <v-btn to="/cart" text rounded>Cart {{getCartlength}}</v-btn>
-    <v-btn to="/Checkout" text rounded>Checkout</v-btn>
+    <v-btn to="/placeorder" text rounded>Checkout</v-btn>
     <v-btn @click="toggleTheme" text rounded>Light</v-btn>
     
   </v-app-bar>
