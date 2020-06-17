@@ -59,9 +59,15 @@ export const mutations = {
     let indexOfProduct = state.cart.indexOf(product);
     state.cart.splice(indexOfProduct, 1)
   },
-  setShipping(state, {price, estimated}){
+  setShipping(state, {price, shippingEstimated}){
     state.shippingPrice = price,
-    state.shippingEstimated = estimated
+    state.shippingEstimated = shippingEstimated
+  }, 
+  clearCArt(state){
+    state.cart = [];
+    state.cartLength =  0;
+    state.shippingPrice =  0;
+    state.shippingEstimated = ""
   }
 }
 
@@ -86,4 +92,7 @@ export const getters = {
     })
     return total + state.shippingPrice
   },
+  getEstimatedDelivery(state){
+    return state.shippingEstimated
+  }
 }
