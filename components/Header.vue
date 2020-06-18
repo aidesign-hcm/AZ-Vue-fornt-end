@@ -3,6 +3,7 @@
     <v-toolbar-title>
       <v-btn to="/" text>{{ title }}</v-btn>
     </v-toolbar-title>
+    <Search />
     <v-spacer />
     <template v-if="$auth.$state.loggedIn">
         <v-btn to="/profile" text>{{ $auth.$state.user.name }}</v-btn>
@@ -21,6 +22,8 @@
 
 <script>
 import { mapGetters } from "Vuex";
+import Search from "~/components/Search.vue";
+
 export default {
   data() {
     return {
@@ -37,6 +40,9 @@ export default {
     async onLogout(){
         await this.$auth.logout()
     }
+  },
+  components: {
+    Search
   }
 };
 </script>

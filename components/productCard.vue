@@ -3,7 +3,7 @@
     <v-card class="mx-auto">
       <v-img
         class="white--text align-end"
-        :src="product.productImage"
+        :src="product.photo"
       >
     
         <v-card-title></v-card-title>
